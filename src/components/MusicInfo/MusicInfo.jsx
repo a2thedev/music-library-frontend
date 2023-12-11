@@ -1,26 +1,28 @@
 const MusicInfo = ({ musicobj }) => {
   return (
-    <div className="flex-item">
-      <h4>{musicobj.title}</h4>
-      <div>
+    musicobj && (
+      <div className="flex-item">
+        <h4>{musicobj.title}</h4>
         <div>
-          <span>Artist</span>
-          <span>{musicobj.artist}</span>
-        </div>
-        <div>
-          <span>Album</span>
-          <span>{musicobj.album}</span>
-        </div>
-        <div>
-          <span>Release Date</span>
-          <span>{musicobj.releaseDate}</span>
-        </div>
-        <div>
-          <span>Genre</span>
-          <span>{musicobj.genre}</span>
+          <div>
+            <span>Artist</span>
+            <span>{musicobj.artist}</span>
+          </div>
+          <div>
+            <span>Album</span>
+            <span>{musicobj.album}</span>
+          </div>
+          <div>
+            <span>Release Date</span>
+            <span>{musicobj.releaseDate}</span>
+          </div>
+          <div>
+            <span>Genre</span>
+            <span>{musicobj.genre}</span>
+          </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 

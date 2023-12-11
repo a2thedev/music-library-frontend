@@ -1,8 +1,14 @@
 import MusictItem from "../MusicItem/MusicItem";
 
-const MusicTable = ({ music = [] }) => {
-  const musicItems = music.map((song) => (
-    <MusictItem key={song.title} title={song.title} />
+const MusicTable = ({ music = [], activeIndex, setActiveIndex }) => {
+  const musicItems = music.map((song, i) => (
+    <MusictItem
+      key={song.title}
+      title={song.title}
+      activeIndex={activeIndex}
+      setActiveIndex={setActiveIndex}
+      index={i}
+    />
   ));
   return (
     <div className="flex-item">

@@ -8,6 +8,7 @@ import initData from "./data/data";
 
 function App() {
   const [music, setMusic] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   useEffect(() => {
     setMusic(initData);
@@ -18,18 +19,17 @@ function App() {
     setMusic(updatedMusic);
   };
 
-  const selectedMusic = {
-    title: "Always Knew",
-    artist: "Lecrae",
-    album: "All Things Work Together",
-    releaseDate: "2017",
-  };
+  const selectedMusic = music[activeIndex];
 
   return (
     <div className="App">
       <Header />
       <div className="flex-container">
-        <MusicTable music={music} />
+        <MusicTable
+          music={music}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+        />
         <MusicInfo musicobj={selectedMusic} />
         <NewMusicForm onNewMusic={handleNewMusic} />
       </div>

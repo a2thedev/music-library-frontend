@@ -1,8 +1,6 @@
 const MusicInfo = ({ musicobj }) => {
-  console.log(musicobj);
-
   return (
-    <div>
+    <div className="flex-item">
       <h4>{musicobj.title}</h4>
       <div>
         <div>

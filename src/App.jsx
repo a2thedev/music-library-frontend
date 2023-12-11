@@ -14,8 +14,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <MusicTable />
-      <MusicInfo musicobj={selectedMusic} />
+      <div className="flex-container">
+        <MusicTable />
+        <MusicInfo musicobj={selectedMusic} />
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import MusicTable from "./components/MusicTable/MusicTable";
 import MusicInfo from "./components/MusicInfo/MusicInfo";
+import NewMusicForm from "./components/NewMusicForm/NewMusicFile";
 
 function App() {
   const selectedMusic = {
@@ -17,6 +18,7 @@ function App() {
       <div className="flex-container">
         <MusicTable />
         <MusicInfo musicobj={selectedMusic} />
+        <NewMusicForm />
       </div>
     </div>
   );

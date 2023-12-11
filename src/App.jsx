@@ -3,10 +3,15 @@ import Header from "./components/Header/Header";
 import MusicTable from "./components/MusicTable/MusicTable";
 import MusicInfo from "./components/MusicInfo/MusicInfo";
 import NewMusicForm from "./components/NewMusicForm/NewMusicForm";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import initData from "./data/data";
 
 function App() {
   const [music, setMusic] = useState([]);
+
+  useEffect(() => {
+    setMusic(initData);
+  }, []);
 
   const handleNewMusic = (newMusic) => {
     const updatedMusic = [...music, newMusic];
@@ -17,7 +22,7 @@ function App() {
     title: "Always Knew",
     artist: "Lecrae",
     album: "All Things Work Together",
-    releaseDate: 2017,
+    releaseDate: "2017",
   };
 
   return (

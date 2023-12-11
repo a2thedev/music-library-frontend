@@ -1,3 +1,19 @@
 .active-btn {
   background-color: rgb(88, 228, 181);
 }
+
+.music-item {
+  border-bottom: 2px solid black;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.music-item:hover {
+  cursor: pointer;
+  background-color: aquamarine;
+}
+
+.active-music {
+  background-color: aqua;
+}

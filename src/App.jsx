@@ -3,8 +3,11 @@ import Header from "./components/Header/Header";
 import MusicTable from "./components/MusicTable/MusicTable";
 import MusicInfo from "./components/MusicInfo/MusicInfo";
 import NewMusicForm from "./components/NewMusicForm/NewMusicForm";
+import React, { useState } from "react";
 
 function App() {
+  const [music, setMusic] = useState([]);
+
   const selectedMusic = {
     title: "Always Knew",
     artist: "Lecrae",
@@ -16,7 +19,7 @@ function App() {
     <div className="App">
       <Header />
       <div className="flex-container">
-        <MusicTable />
+        <MusicTable music={music} />
         <MusicInfo musicobj={selectedMusic} />
         <NewMusicForm />
       </div>

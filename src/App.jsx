@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import MusicTable from "./components/MusicTable/MusicTable";
 import MusicInfo from "./components/MusicInfo/MusicInfo";
-import NewMusicForm from "./components/NewMusicForm/NewMusicFile";
+import NewMusicForm from "./components/NewMusicForm/NewMusicForm";
 
 function App() {
   const selectedMusic = {

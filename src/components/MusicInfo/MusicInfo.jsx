@@ -1,23 +1,25 @@
-const MusicInfo = ({ title }) => {
+const MusicInfo = ({ musicobj }) => {
+  console.log(musicobj);
+
   return (
     <div>
-      <h4>{title}</h4>
+      <h4>{musicobj.title}</h4>
       <div>
         <div>
           <span>Artist</span>
-          <span>Lecrae</span>
+          <span>{musicobj.artist}</span>
         </div>
         <div>
           <span>Album</span>
-          <span>All Things Work Together</span>
+          <span>{musicobj.album}</span>
         </div>
         <div>
           <span>Release Date</span>
-          <span>2017-09-17</span>
+          <span>{musicobj.releaseDate}</span>
         </div>
         <div>
           <span>Genre</span>
-          <span>Hip Hop</span>
+          <span>{musicobj.genre}</span>
         </div>
       </div>
     </div>

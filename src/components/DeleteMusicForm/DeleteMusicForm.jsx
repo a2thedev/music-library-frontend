@@ -17,7 +17,7 @@ const DeleteMusicForm = ({ musicId, onDelete }) => {
   };
 
   return (
-    <button onClick={handleDelete} className="delete-button">
+    <button className="delete-button" onClick={handleDelete}>
       Delete Music
     </button>
   );

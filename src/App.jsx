@@ -4,6 +4,7 @@ import MusicTable from "./components/MusicTable/MusicTable";
 import SearchMusic from "./components/SearchMusic/SearchMusic";
 // import MusicInfo from "./components/MusicInfo/MusicInfo";
 import NewMusicForm from "./components/NewMusicForm/NewMusicForm";
+import DeleteMusicForm from "./components/DeleteMusicForm/DeleteMusicForm";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -45,6 +46,25 @@ function App() {
     }
   };
 
+  const userDelete = async () => {
+    try {
+      if (activeIndex !== -1 && filterMusic.length > activeIndex) {
+        const deletedMusicId = filterMusic[activeIndex].id;
+
+        const response = await axios.delete(
+          `https://localhost:7063/api/Songs/${deletedMusicId}`
+        );
+
+        if (response.status === 204) {
+          fetchMusic();
+          setActiveIndex(-1);
+        }
+      }
+    } catch (error) {
+      console.warn("Error in UserDelete", error);
+    }
+  };
+
   const selectedMusic = filterMusic[activeIndex];
 
   return (
@@ -59,6 +79,9 @@ function App() {
           setActiveIndex={setActiveIndex}
         />
         {/* <MusicInfo musicobj={selectedMusic} /> */}
+        {selectedMusic && (
+          <DeleteMusicForm musicId={selectedMusic.id} onDelete={userDelete} />
+        )}
         <NewMusicForm onNewMusic={fetchMusic} />
       </div>
     </div>

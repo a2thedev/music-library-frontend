@@ -2,7 +2,7 @@ import MusictItem from "../MusicItem/MusicItem";
 import React from "react";
 import "./MusicTable.css";
 
-const MusicTable = ({ music = [], activeIndex, setActiveIndex }) => {
+const MusicTable = ({ music = [], activeIndex, setActiveIndex, onDelete }) => {
   const musicItems = music.map((song, i) => (
     <MusictItem
       key={song.title}
@@ -14,10 +14,11 @@ const MusicTable = ({ music = [], activeIndex, setActiveIndex }) => {
       activeIndex={activeIndex}
       setActiveIndex={setActiveIndex}
       index={i}
+      onDelete={onDelete}
     />
   ));
   return (
-    <table className="table flex-item">
+    <table className="table-success flex-item">
       <thead>
         <tr>
           <th className="header-cell">Song Title</th>
@@ -26,9 +27,10 @@ const MusicTable = ({ music = [], activeIndex, setActiveIndex }) => {
           <th className="header-cell">Release Date</th>
           <th className="header-cell">Genre</th>
           <th className="header-cell">Add Favorite</th>
+          <th className="header-cell">Delete Music</th>
         </tr>
       </thead>
-      <tbody className="table">{musicItems}</tbody>
+      <tbody>{musicItems}</tbody>
     </table>
   );
 };

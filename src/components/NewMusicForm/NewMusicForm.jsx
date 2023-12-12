@@ -34,16 +34,22 @@ const NewMusicForm = ({ onNewMusic }) => {
   return (
     <form onSubmit={handleSubmit} className="flex-item">
       <h4>Add Music</h4>
-      <TextField label="Title" value={title} onChange={setTitle} />
-      <TextField label="Artist" value={artist} onChange={setArtist} />
-      <TextField label="Album" value={album} onChange={setAlbum} />
-      <TextField
-        label="Release Date"
-        value={releaseDate}
-        onChange={setReleaseDate}
-      />
-      <TextField label="Genre" value={genre} onChange={setGenre} />
-      <button type="submit">Add music</button>
+      <div className="p-2">
+        <TextField label="Title" value={title} onChange={setTitle} />
+        <TextField label="Artist" value={artist} onChange={setArtist} />
+        <TextField label="Album" value={album} onChange={setAlbum} />
+        <TextField
+          label="Release Date"
+          value={releaseDate}
+          onChange={setReleaseDate}
+        />
+        <TextField label="Genre" value={genre} onChange={setGenre} />
+        <div className="d-flex justify-content-center">
+          <button type="button" className="btn btn-outline-success">
+            Add music
+          </button>
+        </div>
+      </div>
     </form>
   );
 };

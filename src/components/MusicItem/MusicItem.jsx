@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./MusicItem.css";
+import DeleteMusicForm from "../DeleteMusicForm/DeleteMusicForm";
 
 const MusictItem = ({
+  id,
   title,
   artist,
   album,
@@ -10,6 +12,7 @@ const MusictItem = ({
   activeIndex,
   setActiveIndex,
   index,
+  onDelete,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -21,7 +24,7 @@ const MusictItem = ({
     setActiveIndex(index);
   };
 
-  const btnClass = isFavorite ? "active-btn" : "";
+  const btnClass = isFavorite ? "btn btn-success" : "btn btn-secondary";
   const actvieClass = index === activeIndex ? "active-movie" : "";
 
   return (
@@ -35,6 +38,9 @@ const MusictItem = ({
         <button className={btnClass} onClick={handleFavorite}>
           Favorite
         </button>
+      </td>
+      <td>
+        <DeleteMusicForm musicId={id} onDelete={() => onDelete(id)} />
       </td>
     </tr>
   );

@@ -39,13 +39,13 @@ const NewMusicForm = ({ onNewMusic }) => {
         <TextField label="Artist" value={artist} onChange={setArtist} />
         <TextField label="Album" value={album} onChange={setAlbum} />
         <TextField
-          label="Release Date"
+          label="Release Date (ex:year-month-day)"
           value={releaseDate}
           onChange={setReleaseDate}
         />
         <TextField label="Genre" value={genre} onChange={setGenre} />
         <div className="d-flex justify-content-center">
-          <button type="button" className="btn btn-outline-success">
+          <button className="btn btn-outline-success" type="submit">
             Add music
           </button>
         </div>

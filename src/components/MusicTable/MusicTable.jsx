@@ -1,5 +1,4 @@
 import MusictItem from "../MusicItem/MusicItem";
-import React from "react";
 import "./MusicTable.css";
 
 const MusicTable = ({ music = [], activeIndex, setActiveIndex, onDelete }) => {

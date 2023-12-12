@@ -12,7 +12,6 @@ const MusictItem = ({
   activeIndex,
   setActiveIndex,
   index,
-  onDelete,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -40,7 +39,7 @@ const MusictItem = ({
         </button>
       </td>
       <td>
-        <DeleteMusicForm musicId={id} onDelete={() => onDelete(id)} />
+        <DeleteMusicForm />
       </td>
     </tr>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TextField from "../TextField/TextField";
+import axios from "axios";
 
 const NewMusicForm = ({ onNewMusic }) => {
   const [title, setTitle] = useState("");
@@ -8,7 +9,7 @@ const NewMusicForm = ({ onNewMusic }) => {
   const [releaseDate, setReleaseDate] = useState("");
   const [genre, setGenre] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       title,
@@ -17,7 +18,17 @@ const NewMusicForm = ({ onNewMusic }) => {
       releaseDate,
       genre,
     };
-    onNewMusic(formData);
+    try {
+      const response = await axios.post(
+        "https://localhost:7063/api/Songs/",
+        formData
+      );
+      if (response.status === 201) {
+        onNewMusic();
+      }
+    } catch (error) {
+      console.warn("Error submitting new music form:", error);
+    }
   };
 
   return (

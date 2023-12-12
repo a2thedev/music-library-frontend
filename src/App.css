@@ -9,6 +9,7 @@
   display: flex;
   padding: 20px 50px;
   gap: 10px;
+  flex-direction: column;
 }
 
 .flex-item {
@@ -18,4 +19,8 @@
 
 h4 {
   background-color: lightseagreen;
+}
+
+.flex-info {
+  background-color: whitesmoke;
 }

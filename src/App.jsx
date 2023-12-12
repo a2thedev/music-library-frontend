@@ -1,37 +1,65 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import MusicTable from "./components/MusicTable/MusicTable";
-import MusicInfo from "./components/MusicInfo/MusicInfo";
+import SearchMusic from "./components/SearchMusic/SearchMusic";
+// import MusicInfo from "./components/MusicInfo/MusicInfo";
 import NewMusicForm from "./components/NewMusicForm/NewMusicForm";
 import React, { useState, useEffect } from "react";
-import initData from "./data/data";
+import axios from "axios";
 
 function App() {
   const [music, setMusic] = useState([]);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [filterMusic, setFilterMusic] = useState([]);
 
-  useEffect(() => {
-    setMusic(initData);
-  }, []);
-
-  const handleNewMusic = (newMusic) => {
-    const updatedMusic = [...music, newMusic];
-    setMusic(updatedMusic);
+  const fetchMusic = async () => {
+    try {
+      const response = await axios.get("https://localhost:7063/api/Songs");
+      // console.log(response);
+      setMusic(response.data);
+    } catch (error) {
+      console.warn("Error in fetchMovies request: ", error);
+    }
   };
 
-  const selectedMusic = music[activeIndex];
+  useEffect(() => {
+    fetchMusic();
+  }, []);
+
+  const userSearch = async (searchMusic) => {
+    try {
+      const response = await axios.get("https://localhost:7063/api/Songs/");
+
+      const filterMusic = response.data.filter(
+        (song) =>
+          song.title.toLowerCase().includes(searchMusic.toLowerCase()) ||
+          song.artist.toLowerCase().includes(searchMusic.toLowerCase()) ||
+          song.album.toLowerCase().includes(searchMusic.toLowerCase()) ||
+          song.releaseDate.toLowerCase().includes(searchMusic.toLowerCase()) ||
+          song.genre.toLowerCase().includes(searchMusic.toLowerCase())
+      );
+
+      setFilterMusic(filterMusic);
+    } catch (error) {
+      console.warn("Error in userSearch:", error);
+    }
+  };
+
+  const selectedMusic = filterMusic[activeIndex];
 
   return (
     <div className="App">
       <Header />
+      <SearchMusic onSearch={userSearch} />
+
       <div className="flex-container">
         <MusicTable
-          music={music}
+          music={filterMusic.length > 0 ? filterMusic : music}
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
         />
-        <MusicInfo musicobj={selectedMusic} />
-        <NewMusicForm onNewMusic={handleNewMusic} />
+        {/* <MusicInfo musicobj={selectedMusic} /> */}
+        <NewMusicForm onNewMusic={fetchMusic} />
       </div>
     </div>
   );

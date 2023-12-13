@@ -8,16 +8,16 @@ const DeleteMusicForm = ({ musicId, onDelete }) => {
       const response = await axios.delete(
         `https://localhost:7063/api/Songs/${musicId}`
       );
-      if (response.status === 204) {
-        onDelete();
-      }
     } catch (error) {
       console.warn("Error deleting music:", error);
     }
   };
 
   return (
-    <button className="delete-button" onClick={handleDelete}>
+    <button
+      className="delete-button btn btn-outline-danger"
+      onClick={handleDelete}
+    >
       Delete Music
     </button>
   );

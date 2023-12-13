@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TextField from "../TextField/TextField";
 import axios from "axios";
+import "./NewMusicForm.css";
 
 const NewMusicForm = ({ onNewMusic }) => {
   const [title, setTitle] = useState("");
@@ -32,7 +33,7 @@ const NewMusicForm = ({ onNewMusic }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex-item">
+    <form onSubmit={handleSubmit} className="add-style">
       <h4>Add Music</h4>
       <div className="p-2">
         <TextField label="Title" value={title} onChange={setTitle} />

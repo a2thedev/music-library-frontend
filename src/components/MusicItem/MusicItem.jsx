@@ -2,18 +2,7 @@ import React, { useState } from "react";
 import "./MusicItem.css";
 import DeleteMusicForm from "../DeleteMusicForm/DeleteMusicForm";
 
-const MusictItem = ({
-  id,
-  title,
-  artist,
-  album,
-  releaseDate,
-  genre,
-  activeIndex,
-  setActiveIndex,
-  index,
-  onDelete,
-}) => {
+const MusictItem = ({ song, activeIndex, setActiveIndex, index }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleFavorite = (e) => {
@@ -25,22 +14,22 @@ const MusictItem = ({
   };
 
   const btnClass = isFavorite ? "btn btn-success" : "btn btn-secondary";
-  const actvieClass = index === activeIndex ? "active-movie" : "";
+  const activeClass = index === activeIndex ? "active-movie" : "";
 
   return (
-    <tr onClick={handleActive} className={`music-item ${actvieClass}`}>
-      <td className="item-cell">{title}</td>
-      <td className="item-cell">{artist}</td>
-      <td className="item-cell">{album}</td>
-      <td className="item-cell">{releaseDate}</td>
-      <td className="item-cell">{genre}</td>
-      <td>
+    <tr onClick={handleActive} className={`music-item ${activeClass}`}>
+      <td className="item-cell">{song.title}</td>
+      <td className="item-cell">{song.artist}</td>
+      <td className="item-cell">{song.album}</td>
+      <td className="item-cell">{song.releaseDate}</td>
+      <td className="item-cell">{song.genre}</td>
+      <td className="item-cell">
         <button className={btnClass} onClick={handleFavorite}>
           Favorite
         </button>
       </td>
-      <td>
-        <DeleteMusicForm musicId={id} onDelete={() => onDelete(id)} />
+      <td className="item-cell">
+        <DeleteMusicForm musicId={song.id} />
       </td>
     </tr>
   );

@@ -1,19 +1,14 @@
 import MusictItem from "../MusicItem/MusicItem";
 import "./MusicTable.css";
 
-const MusicTable = ({ music = [], activeIndex, setActiveIndex, onDelete }) => {
+const MusicTable = ({ music = [], activeIndex, setActiveIndex }) => {
   const musicItems = music.map((song, i) => (
     <MusictItem
-      key={song.title}
-      title={song.title}
-      artist={song.artist}
-      album={song.album}
-      releaseDate={song.releaseDate}
-      genre={song.genre}
+      song={song}
+      key={song.id}
       activeIndex={activeIndex}
       setActiveIndex={setActiveIndex}
       index={i}
-      onDelete={onDelete}
     />
   ));
   return (
